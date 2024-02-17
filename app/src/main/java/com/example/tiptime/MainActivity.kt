@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -159,7 +160,8 @@ fun RoundTheTipRow(
         )
     }
 }
-private fun calculateTip(amount: Double, tipPercent: Double, round: Boolean): String {
+@VisibleForTesting
+internal fun calculateTip(amount: Double, tipPercent: Double, round: Boolean): String {
     var tip = tipPercent / 100 * amount
     if (round) {
         tip = kotlin.math.ceil(tip)
